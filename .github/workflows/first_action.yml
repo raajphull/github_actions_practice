@@ -1,0 +1,16 @@
+name: first_workflow
+
+on: push
+
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: welcome_message
+      run: echo "I h8 pie"
+
+    - name: list_files
+      run: ls -la
+    
+    - name: readme_file
+      run: cat README.md
