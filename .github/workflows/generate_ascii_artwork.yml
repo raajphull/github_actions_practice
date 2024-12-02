@@ -16,7 +16,9 @@ jobs:
 
     # Run shell script from root folder
     - name: Run generate_ascii_artwork.sh
-      run: ./generate_ascii_artwork.sh 
+      run: |
+        chmod +x generate_ascii_artwork.sh
+        ./generate_ascii_artwork.sh 
 
     # # Install third party program from ubuntu cowsay on he github runner to generate the artwork
     # - name: Install program cowsay
