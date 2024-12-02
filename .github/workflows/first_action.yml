@@ -11,11 +11,13 @@ jobs:
     - name: checkout action
       uses: actions/checkout@v4
 
-    - name: welcome_message
-      run: echo "I h8 pie"
+    # Using the '|' to run multiple commands 
+    - name: list, echo and read file
+      run: |
+        echo "I h8 pie"
+        ls -ltra
+        cat ./README.md
 
-    - name: list_files
-      run: ls -la
-    
-    - name: readme_file
-      run: cat ./README.md
+    # Using third party libary cowsay --> The cowsay command is a command-line utility that generates ASCII art images of cows or other animals speaking or thinking
+    - name: generate ASCII artwork
+      run: cowsay -f dragon "Run for cover, I am a DRAGON...RAWR" >> dragon.log
