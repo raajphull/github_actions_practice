@@ -17,7 +17,3 @@ jobs:
         echo "I h8 pie"
         ls -ltra
         cat ./README.md
-
-    # Using third party libary cowsay --> The cowsay command is a command-line utility that generates ASCII art images of cows or other animals speaking or thinking
-    - name: generate ASCII artwork
-      run: cowsay -f dragon "Run for cover, I am a DRAGON...RAWR" >> dragon.log

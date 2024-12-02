@@ -3,7 +3,7 @@ name: Generate ASCII Artwork
 on: push
 
 jobs:
-  first_job:
+  generate_ascii_artwork:
     runs-on: ubuntu-latest
     steps:
     # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it. 
