@@ -11,21 +11,28 @@ jobs:
     - name: checkout action
       uses: actions/checkout@v4
 
-    # Install third party program from ubuntu cowsay on he github runner to generate the artwork
-    - name: Install program cowsay
-      run: sudo apt-get install cowsay -y 
-
-    # Using third party libary cowsay --> The cowsay command is a command-line utility that generates ASCII art images of cows or other animals speaking or thinking
-    - name: Execute cowsay cmd 
-      run: cowsay -f dragon "Run for cover, I am a DRAGON...RAWR" >> dragon.log
-
-    # Test to make sure file exists 
-    - name: Test file exists
-      run: grep -i "dragon" dragon.log
-
-    # Read file dragon.log
-    - name: Read file 
-      run: cat dragon.log
-    
     - name: Checkout repo files
       run: ls -ltra
+
+    # Run shell script from root folder
+    - name: Run generate_ascii_artwork.sh
+      run: ./generate_ascii_artwork.sh 
+
+    # # Install third party program from ubuntu cowsay on he github runner to generate the artwork
+    # - name: Install program cowsay
+    #   run: sudo apt-get install cowsay -y 
+
+    # # Using third party libary cowsay --> The cowsay command is a command-line utility that generates ASCII art images of cows or other animals speaking or thinking
+    # - name: Execute cowsay cmd 
+    #   run: cowsay -f dragon "Run for cover, I am a DRAGON...RAWR" >> dragon.log
+
+    # # Test to make sure file exists 
+    # - name: Test file exists
+    #   run: grep -i "dragon" dragon.log
+
+    # # Read file dragon.log
+    # - name: Read file 
+    #   run: cat dragon.log
+    
+    # - name: Checkout repo files
+    #   run: ls -ltra
