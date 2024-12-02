@@ -3,22 +3,49 @@ name: Generate ASCII Artwork
 on: push
 
 jobs:
-  generate_ascii_artwork:
+  build_job_1:
     runs-on: ubuntu-latest
-    steps:
-    # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it. 
-    # This means the github runner can access your repo allowing it to run commands such as ls & cat
-    - name: checkout action
-      uses: actions/checkout@v4
+    steps: 
+    - name: Install cowsay program
+      run: sudo apt-get install cowsay -y 
+    
+    - name: Execute cowsay cmd 
+      run: cowsay -f dragon "Run for cover, I am a DRAGON...RAWR" >> dragon.log
 
-    - name: Checkout repo files
+    - name: sleep for 30 seconds
+      run: sleep 30
+
+  build_job_2:
+    runs-on: ubuntu-latest
+    needs: build_job_1
+    steps:
+    - name: sleep for 10 seconds
+      run: sleep 10
+
+    - name: Test file exists
+      run: grep -i "dragon" dragon.log
+     
+  build_job_3:
+    runs-on: ubuntu-latest
+    needs: build_job_2
+    steps:
+    - name: Read files
       run: ls -ltra
 
-    # Run shell script from root folder
-    - name: Run generate_ascii_artwork.sh
-      run: |
-        chmod +x generate_ascii_artwork.sh
-        ./generate_ascii_artwork.sh 
+    - name: Deploy
+      run: echo deploy ... .. . 
+
+  # generate_ascii_artwork:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Checkout repo files
+  #     run: ls -ltra
+
+  #   # Run shell script from root folder
+  #   - name: Run generate_ascii_artwork.sh
+  #     run: |
+  #       chmod +x generate_ascii_artwork.sh
+  #       ./generate_ascii_artwork.sh 
 
     # # Install third party program from ubuntu cowsay on he github runner to generate the artwork
     # - name: Install program cowsay
