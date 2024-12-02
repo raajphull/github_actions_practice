@@ -6,6 +6,8 @@ jobs:
   first_job:
     runs-on: ubuntu-latest
     steps:
+    # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it. 
+    # This means the github runner can access your repo allowing it to run commands such as ls & cat
     - name: checkout action
       uses: actions/checkout@v4
 
