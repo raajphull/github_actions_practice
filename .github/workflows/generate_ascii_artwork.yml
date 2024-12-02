@@ -12,15 +12,25 @@ jobs:
     - name: Execute cowsay cmd 
       run: cowsay -f dragon "Run for cover, I am a DRAGON...RAWR" >> dragon.log
 
-    - name: sleep for 30 seconds
-      run: sleep 30
+    # Upload Actions Artifacts from your Workflow Runs.
+    - uses: actions/upload-artifact@v4
+      with:
+      # Name of the artifact to upload.
+      # Optional. Default is 'artifact'
+        name: dragon_text_file 
+        path: dragon.log
 
   build_job_2:
     runs-on: ubuntu-latest
     needs: build_job_1
     steps:
-    - name: sleep for 10 seconds
-      run: sleep 10
+    # Download Actions Artifacts from your Workflow Runs.
+    - uses: actions/download-artifact@v4
+      with:
+      # Name of the artifact to download.
+      # If unspecified, all artifacts for the run are downloaded.
+      # Optional.
+        name: dragon_text_file 
 
     - name: Test file exists
       run: grep -i "dragon" dragon.log
@@ -29,6 +39,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_job_2
     steps:
+    # Download Actions Artifacts from your Workflow Runs.
+    - uses: actions/download-artifact@v4
+      with:
+      # Name of the artifact to download.
+      # If unspecified, all artifacts for the run are downloaded.
+      # Optional.
+        name: dragon_text_file 
+
     - name: Read files
       run: ls -ltra
 
