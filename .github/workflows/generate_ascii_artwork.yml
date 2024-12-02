@@ -48,7 +48,7 @@ jobs:
         name: dragon_text_file 
 
     - name: Read files
-      run: ls -ltra
+      run: cat dragon.log
 
     - name: Deploy
       run: echo deploy ... .. . 
